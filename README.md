@@ -13,6 +13,8 @@ Sistem, hem klasik **form tabanlı yönetim** (şantiye, çalışan, denetim kay
 > - Aynı zamanda **pretrained YOLOv8** ile **PPE veri setiyle fine-tune edilmiş YOLOv8** sonuçlarını **aynı arayüzde kıyaslamak**  
 > - Bu kıyas üzerinden transfer öğrenme ve CNN yapısını somut bir örnekle açıklamak
 
+## Video Analizi
+[Video Dosyasını Görüntüle](videos/Yoloinsaatotomation.mp4)
 ---
 
 ## 1. Genel Bakış
