@@ -198,6 +198,7 @@ Döndürdüğü yapı:
   }
 }
 
+```
 # 3. Arayüz ve Sayfalar
 
 ## 3.1. Dashboard (/)
@@ -514,12 +515,14 @@ PPE val setinde pretrained YOLOv8n modeli test edildi.
 # 6. Kurulum ve Çalıştırma
 
 
+```bash
 python -m venv venv
 venv\Scripts\activate     # Windows
 # source venv/bin/activate   # Linux/Mac
 venv\Scripts\activate
 uvicorn app.main:app --reload
 
+```
 - Gösterge Paneli:
 http://127.0.0.1:8000/
 
