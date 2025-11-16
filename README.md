@@ -15,7 +15,7 @@ Sistem, hem klasik **form tabanlı yönetim** (şantiye, çalışan, denetim kay
 
 ## Video 
 
-[▶️ Videoyu İzle](https://github.com/<kullanıcı>/<repo>/releases/download/v1.0/Yoloinsaatotomation.mp4.mp4)
+[▶️ Videoyu İzle](https://github.com/user-attachments/assets/4e2d7af1-d6b4-434b-907f-79dc26b7f8f2)
 
 ---
 
