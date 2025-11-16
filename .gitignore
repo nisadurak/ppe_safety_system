@@ -1,4 +1,12 @@
-/model
-/README.md
-/venv
-/yolov8n.pt
+__pycache__/
+*.pyc
+*.pyo
+
+# venv
+venv/
+
+# model checkpoints
+*.pt
+
+# uploads
+uploads/
