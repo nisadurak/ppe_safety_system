@@ -87,9 +87,9 @@ app/
 │   └── safety.html          # İş güvenliği + model karşılaştırma
 └── main.py  
 
+```bash
 
-
-                # FastAPI uygulama başlangıcı
+# FastAPI uygulama başlangıcı
 # 2. Servisler
 
 ## 2.1. SiteService
