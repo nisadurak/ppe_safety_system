@@ -153,11 +153,11 @@ Her şantiye için risk ağırlıkları:
 - **high = 3**
 
 **Ortalama skor:**
-
+```bash
 \[
 risk\_score = \frac{\sum risk\_weight}{denetim\ sayısı}
 \]
-
+```
 **Skor etiketlemesi:**
 - `< 1.5` → **Düşük risk**  
 - `< 2.5` → **Orta risk**  
