@@ -216,6 +216,10 @@ Her şantiye için:
 - Low / Medium / High sayıları  
 - Ortalama risk skoru  
 - Risk etiketi: **Düşük / Orta / Yüksek**
+## Gösterge Paneli
+
+
+![Gösterge Paneli](images/Gösterge Paneli.png)
 
 ---
 
