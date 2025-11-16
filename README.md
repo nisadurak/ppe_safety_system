@@ -17,6 +17,7 @@ Sistem, hem klasik **form tabanlı yönetim** (şantiye, çalışan, denetim kay
 <video src="videos/denetim_analizi.mp4" controls width="600">
   Tarayıcınız video oynatmayı desteklemiyor.
 </video>
+
 [Video Dosyasını Görüntüle](videos/Yoloinsaatotomation.mp4)
 ---
 
