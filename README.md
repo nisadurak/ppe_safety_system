@@ -14,11 +14,9 @@ Sistem, hem klasik **form tabanlı yönetim** (şantiye, çalışan, denetim kay
 > - Bu kıyas üzerinden transfer öğrenme ve CNN yapısını somut bir örnekle açıklamak
 
 ## Video 
-<video src="videos/denetim_analizi.mp4" controls width="600">
-  Tarayıcınız video oynatmayı desteklemiyor.
-</video>
 
-[Video Dosyasını Görüntüle](videos/Yoloinsaatotomation.mp4)
+[▶️ Videoyu İzle](https://github.com/<kullanıcı>/<repo>/releases/download/v1.0/Yoloinsaatotomation.mp4.mp4)
+
 ---
 
 ## 1. Genel Bakış
