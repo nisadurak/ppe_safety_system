@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block title %}Şantiyeler{% endblock %}
+
+{% block content %}
+<h1>Şantiyeler</h1>
+
+<section class="card">
+    <h2>Yeni Şantiye</h2>
+    <form method="post" action="/sites" class="form-grid">
+        <input type="text" name="name" placeholder="Şantiye adı" required>
+        <input type="text" name="location" placeholder="Lokasyon" required>
+        <select name="status">
+            <option value="active">Aktif</option>
+            <option value="paused">Beklemede</option>
+            <option value="completed">Tamamlandı</option>
+        </select>
+        <input type="text" name="supervisor" placeholder="Şantiye şefi">
+        <button type="submit">Kaydet</button>
+    </form>
+</section>
+
+<section class="card">
+    <h2>Kayıtlı Şantiyeler</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ad</th>
+            <th>Lokasyon</th>
+            <th>Durum</th>
+            <th>Şef</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for s in sites %}
+            <tr>
+                <td>{{ s.id }}</td>
+                <td>{{ s.name }}</td>
+                <td>{{ s.location }}</td>
+                <td>{{ s.status }}</td>
+                <td>{{ s.supervisor or "-" }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

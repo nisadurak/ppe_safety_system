@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block title %}Çalışanlar{% endblock %}
+
+{% block content %}
+<h1>Çalışanlar</h1>
+
+<section class="card">
+    <h2>Yeni Çalışan</h2>
+    <form method="post" action="/workers" class="form-grid">
+        <input type="text" name="name" placeholder="Ad Soyad" required>
+        <input type="text" name="role" placeholder="Görev (usta, mühendis...)" required>
+        <select name="site_id">
+            {% for s in sites %}
+                <option value="{{ s.id }}">{{ s.name }}</option>
+            {% endfor %}
+        </select>
+        <select name="ppe_status">
+            <option value="full">PPE Tam</option>
+            <option value="partial">PPE Eksik</option>
+            <option value="none">PPE Yok</option>
+        </select>
+        <button type="submit">Kaydet</button>
+    </form>
+</section>
+
+<section class="card">
+    <h2>Kayıtlı Çalışanlar</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ad</th>
+            <th>Görev</th>
+            <th>Şantiye</th>
+            <th>PPE</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for w in workers %}
+            <tr>
+                <td>{{ w.id }}</td>
+                <td>{{ w.name }}</td>
+                <td>{{ w.role }}</td>
+                <td>
+                    {% set site = (sites | selectattr("id", "equalto", w.site_id) | list | first) %}
+                    {{ site.name if site else "-" }}
+                </td>
+                <td>{{ w.ppe_status }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

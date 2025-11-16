@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}İNFİNİTEX YAPI · İş Güvenliği Bilgi Sistemi{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="app-shell">
+    <header class="topbar">
+        <div class="topbar-title">İNFİNİTEX YAPI İNŞAAT A.Ş.</div>
+        <div class="topbar-subtitle">İş Güvenliği Bilgi Sistemi</div>
+    </header>
+
+    <div class="layout">
+        <aside class="sidebar">
+            
+            <nav>
+                <a href="/" class="nav-link">Gösterge Paneli</a>
+                <a href="/sites" class="nav-link">Şantiyeler</a>
+                <a href="/workers" class="nav-link">Çalışanlar</a>
+                <a href="/safety" class="nav-link">İş Güvenliği</a>
+            </nav>
+        </aside>
+
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</div>
+</body>
+</html>

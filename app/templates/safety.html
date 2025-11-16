@@ -1,0 +1,180 @@
+{% extends "layout.html" %}
+{% block title %}İş Güvenliği{% endblock %}
+
+{% block content %}
+<h1>İş Güvenliği Denetimleri</h1>
+<p class="page-subtitle">
+    Kişisel koruyucu donanım (PPE) tespitine dayalı fotoğraf ve video denetim kayıtları.
+</p>
+
+<div class="grid">
+    <!-- FOTO -->
+    <section class="card">
+        <h2>Fotoğraf ile PPE Analizi</h2>
+        <form method="post" action="/safety/image" enctype="multipart/form-data" class="form-grid">
+            <select name="site_id">
+                {% for s in sites %}
+                    <option value="{{ s.id }}">{{ s.name }}</option>
+                {% endfor %}
+            </select>
+            <input type="text" name="inspector" placeholder="Denetçi adı" required>
+            <select name="risk_level">
+                <option value="low">Düşük</option>
+                <option value="medium">Orta</option>
+                <option value="high">Yüksek</option>
+            </select>
+            <input type="file" name="file" accept="image/*" required>
+            <textarea name="notes" placeholder="Notlar" rows="3"></textarea>
+            <button type="submit">Fotoğrafı Analiz Et</button>
+        </form>
+
+        {% if last_image_detections_ft is not none or last_image_detections_base is not none %}
+            <h3 style="margin-top:16px;">Son Fotoğraf Analizi – Model Karşılaştırması</h3>
+
+            <div class="grid" style="margin-top:8px;">
+                <!-- Fine-tuned -->
+                <section class="card">
+                    <h2>Fine-tuned PPE Modeli (best.pt)</h2>
+
+                    {% if last_image_detections_ft %}
+                        <p style="font-size:13px; color:#6b7280; margin-bottom:6px;">
+                            Sınıf bazlı tespit sayıları:
+                        </p>
+                        <ul>
+                            {% for cls, cnt in last_image_counts_ft.items() %}
+                                <li>{{ cls }}: {{ cnt }}</li>
+                            {% endfor %}
+                        </ul>
+
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Sınıf</th>
+                                <th>Güven</th>
+                                <th>BBox</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for d in last_image_detections_ft %}
+                                <tr>
+                                    <td>{{ d.class_name }}</td>
+                                    <td>{{ (d.confidence * 100) | round(1) }}%</td>
+                                    <td>[{{ d.bbox[0] | round(0) }}, {{ d.bbox[1] | round(0) }}, {{ d.bbox[2] | round(0) }}, {{ d.bbox[3] | round(0) }}]</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>Bu fotoğrafta fine-tuned model herhangi bir nesne tespit etmedi.</p>
+                    {% endif %}
+                </section>
+
+                <!-- Pretrained -->
+                <section class="card">
+                    <h2>Pretrained YOLOv8n Modeli</h2>
+
+                    {% if last_image_detections_base %}
+                        <p style="font-size:13px; color:#6b7280; margin-bottom:6px;">
+                            Sınıf bazlı tespit sayıları:
+                        </p>
+                        <ul>
+                            {% for cls, cnt in last_image_counts_base.items() %}
+                                <li>{{ cls }}: {{ cnt }}</li>
+                            {% endfor %}
+                        </ul>
+
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Sınıf</th>
+                                <th>Güven</th>
+                                <th>BBox</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for d in last_image_detections_base %}
+                                <tr>
+                                    <td>{{ d.class_name }}</td>
+                                    <td>{{ (d.confidence * 100) | round(1) }}%</td>
+                                    <td>[{{ d.bbox[0] | round(0) }}, {{ d.bbox[1] | round(0) }}, {{ d.bbox[2] | round(0) }}, {{ d.bbox[3] | round(0) }}]</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>Bu fotoğrafta pretrained model herhangi bir nesne tespit etmedi.</p>
+                    {% endif %}
+                </section>
+            </div>
+        {% endif %}
+    </section>
+
+    <!-- VIDEO -->
+    <section class="card">
+        <h2>Video ile PPE Analizi</h2>
+        <form method="post" action="/safety/video" enctype="multipart/form-data" class="form-grid">
+            <select name="site_id">
+                {% for s in sites %}
+                    <option value="{{ s.id }}">{{ s.name }}</option>
+                {% endfor %}
+            </select>
+            <input type="text" name="inspector" placeholder="Denetçi adı" required>
+            <input type="file" name="file" accept="video/*" required>
+            <textarea name="notes" placeholder="Notlar" rows="3"></textarea>
+            <button type="submit">Video Analiz Et</button>
+        </form>
+
+        {% if last_video_summary is not none %}
+            <h3 style="margin-top:16px;">Son Video Analizi Özeti</h3>
+            <ul>
+                <li>Analiz edilen frame: {{ last_video_summary.frames_analyzed }}</li>
+                <li>Toplam kişi: {{ last_video_summary.total_person }}</li>
+                <li>Kask tespit: {{ last_video_summary.total_with_helmet }}</li>
+                <li>Yelek tespit: {{ last_video_summary.total_with_vest }}</li>
+                <li>Kask oranı: {{ (last_video_summary.helmet_ratio * 100) | round(1) }}%</li>
+                <li>Yelek oranı: {{ (last_video_summary.vest_ratio * 100) | round(1) }}%</li>
+                <li>Risk seviyesi: {{ last_video_summary.risk_level }}</li>
+            </ul>
+        {% endif %}
+    </section>
+</div>
+
+<section class="card">
+    <h2>Denetim Geçmişi</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Şantiye</th>
+            <th>Denetçi</th>
+            <th>Risk</th>
+            <th>Not</th>
+            <th>Dosya</th>
+            <th>Tespit Edilen PPE</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in inspections %}
+            <tr>
+                <td>{{ i.id }}</td>
+                <td>
+                    {% set site = (sites | selectattr("id", "equalto", i.site_id) | list | first) %}
+                    {{ site.name if site else "-" }}
+                </td>
+                <td>{{ i.inspector }}</td>
+                <td>{{ i.risk_level }}</td>
+                <td>{{ i.notes or "-" }}</td>
+                <td>{{ i.file_name or "-" }}</td>
+                <td>
+                    {% if i.detected_ppe %}
+                        {{ i.detected_ppe | join(", ") }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}
