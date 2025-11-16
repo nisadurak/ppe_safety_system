@@ -1,4 +1,4 @@
-# İNFİNİTEX YAPI – İş Güvenliği Bilgi Sistemi
+# İNFİNİTEX YAPI iNŞAAT A.Ş – İş Güvenliği Bilgi Sistemi
 
 Bu proje, **inşaat şantiyelerinde iş güvenliği denetimlerini** merkezi bir panel üzerinden yönetmek için geliştirilmiş, web tabanlı bir **İş Güvenliği Bilgi Sistemi**dir.  
 
