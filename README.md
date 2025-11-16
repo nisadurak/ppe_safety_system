@@ -85,7 +85,11 @@ app/
 │   ├── sites.html           # Şantiye sayfası
 │   ├── workers.html         # Çalışan sayfası
 │   └── safety.html          # İş güvenliği + model karşılaştırma
-└── main.py                  # FastAPI uygulama başlangıcı
+└── main.py  
+
+
+
+                # FastAPI uygulama başlangıcı
 # 2. Servisler
 
 ## 2.1. SiteService
