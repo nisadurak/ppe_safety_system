@@ -219,7 +219,8 @@ Her şantiye için:
 ## Gösterge Paneli
 
 
-![Gösterge Paneli](images/Gösterge Paneli.png)
+![Dashboard](images/dashboard.png)
+
 
 ---
 
