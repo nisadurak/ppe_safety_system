@@ -221,7 +221,6 @@ Her şantiye için:
 
 ![Dashboard](images/dashboard.png)
 
-
 ---
 
 ## 3.2. Şantiyeler (/sites)
@@ -235,6 +234,7 @@ Her şantiye için:
 ### Kayıtlı Şantiyeler Tablosu
 - Sistemdeki tüm şantiyeler listelenir.
 
+![Şantiyeler](images/santiyeler.png)
 ---
 
 ## 3.3. Çalışanlar (/workers)
@@ -248,9 +248,12 @@ Her şantiye için:
 ### Kayıtlı Çalışanların Tablosu
 - Tüm çalışanlar listelenir.
 
+![Workers](images/workers.png)
 ---
 
 ## 3.4. İş Güvenliği (/safety)
+
+![Safety](images/safety.png)
 
 ### 3.4.1. Fotoğraf ile PPE Analizi
 
@@ -289,6 +292,8 @@ Kullanıcı iki modeli karşılaştırarak transfer learning’in etkisini gör�
 ---
 
 ### 3.4.2. Video ile PPE Analizi
+
+![Video](images/video.png)
 
 #### Form Alanları
 - Şantiye  
@@ -404,6 +409,9 @@ Tablo alanları:
 
 ---
 # 5. Eğitim Süreci ve Metrikler
+
+![Karşılaştırma Sonucu](images/karsilastirmasonucu.png)
+
 ## 5.1. Veri Seti
 
 ### Ana Dataset
@@ -486,7 +494,7 @@ PPE val setinde pretrained YOLOv8n modeli test edildi.
 
 ### Karşılaştırmalı Sonuçlar
 
-| Metric | Eski Fine-Tuned | Auto-Label Fine-Tuned |
+| Metric | Eski Fine-Tuned | ek veri new Fine-Tuned |
 |--------|------------------|------------------------|
 | Mean Precision | **0.7315** | 0.6199 |
 | Mean Recall | 0.5267 | 0.5242 |
