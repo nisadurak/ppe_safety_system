@@ -16,11 +16,8 @@ app.mount(
     name="static",
 )
 
-app.mount(
-    "/uploads",
-    StaticFiles(directory=os.path.join(BASE_DIR, "uploads")),
-    name="uploads",
-)
+app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
+
 
 # Tüm route'lar
 app.include_router(ui_router)

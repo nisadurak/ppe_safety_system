@@ -1,0 +1,25 @@
+<h2>PPE Video Analizi</h2>
+
+<h3>Oluşturulan BBOX Video</h3>
+<video width="800" controls>
+    <source src="/uploads/{{ video_file }}" type="video/mp4">
+</video>
+
+<h3>Örnek BBOX Frame’leri</h3>
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    {% for snap in snapshots %}
+        <img src="/uploads/{{ snap }}" style="width: 240px; border-radius: 8px;">
+    {% endfor %}
+</div>
+
+<hr>
+
+<h3>Analiz Özeti</h3>
+<ul>
+    <li>Toplam Person: {{ person_total }}</li>
+    <li>Toplam Helmet: {{ helmet_total }}</li>
+    <li>Toplam Vest: {{ vest_total }}</li>
+    <li>Kask Oranı: {{ helmet_ratio }}</li>
+    <li>Yelek Oranı: {{ vest_ratio }}</li>
+    <li>Risk Seviyesi: <strong>{{ risk_level }}</strong></li>
+</ul>

@@ -101,7 +101,7 @@ async def create_worker(
     return await workers_page(request)
 
 
-# ---------- SAFETY: FOTO ----------
+# ---------- SAFETY: GET ----------
 @router.get("/safety", response_class=HTMLResponse)
 async def safety_page(request: Request):
     inspections = safety_service.list_inspections()
@@ -115,11 +115,15 @@ async def safety_page(request: Request):
             "last_image_detections_base": None,
             "last_image_counts_ft": None,
             "last_image_counts_base": None,
+            "ft_overlay": None,
+            "base_overlay": None,
             "last_video_summary": None,
+            "video_overlay": None,
         },
     )
 
-# ---------- SAFETY: image ----------
+
+# ---------- SAFETY: FOTOĞRAF ----------
 @router.post("/safety/image", response_class=HTMLResponse)
 async def safety_image(
     request: Request,
@@ -143,7 +147,11 @@ async def safety_image(
     ft_counts = compare["fine_tuned"]["counts"]
     base_counts = compare["pretrained"]["counts"]
 
-    # Denetim kaydı için sadece fine-tuned sınıfları 
+   
+    ft_overlay = compare["fine_tuned"]["overlay_image"]
+    base_overlay = compare["pretrained"]["overlay_image"]
+
+    # Denetim kaydı için sadece fine-tuned sınıfları
     detected_ppe_classes = sorted(list(set(d["class_name"] for d in ft_detections)))
 
     safety_service.create_inspection(
@@ -166,11 +174,12 @@ async def safety_image(
             "last_image_detections_base": base_detections,
             "last_image_counts_ft": ft_counts,
             "last_image_counts_base": base_counts,
+            "ft_overlay": ft_overlay,
+            "base_overlay": base_overlay,
             "last_video_summary": None,
+            "video_overlay": None,
         },
     )
-
-
 
 # ---------- SAFETY: VIDEO ----------
 @router.post("/safety/video", response_class=HTMLResponse)
@@ -191,12 +200,15 @@ async def safety_video(
     summary = yolo_service.analyze_video(save_path, frame_stride=15)
     risk_level = summary["risk_level"]
 
+    # YOLO servisinden gelen çizilmiş video adı (uploads/video_result_xxx.mp4)
+    video_overlay = summary.get("video_overlay")
+
     safety_service.create_inspection(
         site=site,
         inspector=inspector,
         risk_level=risk_level,
         notes=notes,
-        file_name=video_filename,
+        file_name=video_filename,  # orijinal video adı log’da dursun
         detected_ppe=[],
     )
 
@@ -207,7 +219,13 @@ async def safety_video(
             "request": request,
             "inspections": inspections,
             "sites": site_service.list_sites(),
-            "last_image_detections": None,
+            "last_image_detections_ft": None,
+            "last_image_detections_base": None,
+            "last_image_counts_ft": None,
+            "last_image_counts_base": None,
             "last_video_summary": summary,
+            "ft_overlay": None,
+            "base_overlay": None,
+            "video_overlay": summary["video_overlay"],  # <<< BUNU EKLE
         },
     )

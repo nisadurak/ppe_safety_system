@@ -297,7 +297,7 @@ Kullanıcı iki modeli karşılaştırarak transfer learning’in etkisini gör�
 
 ### 3.4.2. Video ile PPE Analizi
 
-![Video](images/video.png)
+![Video](images/image.png)
 
 #### Form Alanları
 - Şantiye  

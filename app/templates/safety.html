@@ -28,6 +28,25 @@
             <button type="submit">Fotoğrafı Analiz Et</button>
         </form>
 
+        {# ---- BBOX ÇİZİLMİŞ GÖRSELLER ---- #}
+        {% if ft_overlay or base_overlay %}
+            <div class="grid" style="margin-top:16px;">
+                {% if ft_overlay %}
+                    <section class="card">
+                        <h3>Fine-tuned Model – Bounding Box’lı Fotoğraf</h3>
+                        <img src="/uploads/{{ ft_overlay }}" style="max-width:100%; border:1px solid #ddd; border-radius:8px;">
+                    </section>
+                {% endif %}
+
+                {% if base_overlay %}
+                    <section class="card">
+                        <h3>Pretrained Model – Bounding Box’lı Fotoğraf</h3>
+                        <img src="/uploads/{{ base_overlay }}" style="max-width:100%; border:1px solid #ddd; border-radius:8px;">
+                    </section>
+                {% endif %}
+            </div>
+        {% endif %}
+
         {% if last_image_detections_ft is not none or last_image_detections_base is not none %}
             <h3 style="margin-top:16px;">Son Fotoğraf Analizi – Model Karşılaştırması</h3>
 
@@ -135,6 +154,15 @@
                 <li>Yelek oranı: {{ (last_video_summary.vest_ratio * 100) | round(1) }}%</li>
                 <li>Risk seviyesi: {{ last_video_summary.risk_level }}</li>
             </ul>
+        {% endif %}
+
+        {# ---- BBOX ÇİZİLMİŞ VİDEO ---- #}
+        {% if video_overlay %}
+            <section class="card" style="margin-top:16px;">
+                <h3>İşlenmiş Video (Bounding Box’lı)</h3>
+                <video src="/uploads/{{ video_overlay }}" controls
+                       style="max-width:100%; border:1px solid #ddd; border-radius:8px;"></video>
+            </section>
         {% endif %}
     </section>
 </div>
