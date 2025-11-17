@@ -297,7 +297,7 @@ Kullanıcı iki modeli karşılaştırarak transfer learning’in etkisini gör�
 
 ### 3.4.2. Video ile PPE Analizi
 
-![Video](images/image.png)
+![Video](images/images.png)
 
 #### Form Alanları
 - Şantiye  
@@ -414,8 +414,8 @@ Tablo alanları:
 ---
 # 5. Eğitim Süreci ve Metrikler
 
-![Karşılaştırma Sonucu](images/karsilastirmasonucu.png)
-
+![Karşılaştırma Sonucu](images/imagee.png)
+![Karşılaştırma Sonucu](images/image.png)
 ## 5.1. Veri Seti
 
 ### Ana Dataset
