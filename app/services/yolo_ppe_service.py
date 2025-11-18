@@ -49,8 +49,7 @@ class YoloPPEService:
         os.makedirs(self.upload_dir, exist_ok=True)
 
   
-    #  YOLO sonucu görsele çiz → uploads içine kaydet
-    # ================================================================
+   
     def _save_overlay(self, result, prefix: str) -> str:
         frame = result.plot()     # YOLO'nun çizdiği (H,W,3) NumPy görseli
 
@@ -58,7 +57,7 @@ class YoloPPEService:
         save_path = os.path.join(self.upload_dir, filename)
 
         cv2.imwrite(save_path, frame)
-        return filename  # HTML'de gösterebilmen için yalnızca isim
+        return filename  
 
     #  TEK MODEL ANALİZ (fotoğraf)
     # ================================================================
@@ -142,7 +141,7 @@ class YoloPPEService:
          # FPS güven
         fps = cap.get(cv2.CAP_PROP_FPS)
         if fps is None or fps <= 0:
-            fps = 25.0  # bazı videolar
+            fps = 25.0  
             
             
         w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
