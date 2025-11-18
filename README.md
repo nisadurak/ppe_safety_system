@@ -13,12 +13,17 @@ Sistem, hem klasik **form tabanlı yönetim** (şantiye, çalışan, denetim kay
 > - Aynı zamanda **pretrained YOLOv8** ile **PPE veri setiyle fine-tune edilmiş YOLOv8** sonuçlarını **aynı arayüzde kıyaslamak**  
 > - Bu kıyas üzerinden transfer öğrenme ve CNN yapısını somut bir örnekle açıklamak
 
-## Video 
+## Fotoğraf Örnek
 
-[▶️ Videoyu İzle](https://github.com/user-attachments/assets/4e2d7af1-d6b4-434b-907f-79dc26b7f8f2)
+[▶️ Videoyu İzle](https://github.com/user-attachments/assets/885a8cd0-a84f-4caa-b8ff-e117c951268a)
 
+ ## Site içerik
+
+ [▶️ Videoyu İzle](https://github.com/user-attachments/assets/7a973a34-894b-4645-9f8a-5814a21cea1a)
+
+## Video Örnek
+![Demo GIF](demo.gif)
 ---
-
 ## 1. Genel Bakış
 
 Sistem üç ana modülden oluşur:
