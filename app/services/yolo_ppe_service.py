@@ -195,7 +195,7 @@ class YoloPPEService:
                     elif name == "vest":
                         total_vest += 1
             else:
-                # stride dışında kalan frame'leri de boş geçmeyelim, orijinali yaz
+                
                 writer.write(frame)
 
             frame_idx += 1

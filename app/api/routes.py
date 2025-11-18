@@ -200,7 +200,7 @@ async def safety_video(
     summary = yolo_service.analyze_video(save_path, frame_stride=15)
     risk_level = summary["risk_level"]
 
-    # YOLO servisinden gelen çizilmiş video adı (uploads/video_result_xxx.mp4)
+
     video_overlay = summary.get("video_overlay")
 
     safety_service.create_inspection(
@@ -226,6 +226,6 @@ async def safety_video(
             "last_video_summary": summary,
             "ft_overlay": None,
             "base_overlay": None,
-            "video_overlay": summary["video_overlay"],  # <<< BUNU EKLE
+            "video_overlay": summary["video_overlay"],  
         },
     )
