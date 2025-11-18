@@ -44,7 +44,7 @@ class YoloPPEService:
         print("[YoloPPEService] Fine-tuned sınıflar:", self.ft_class_names)
         print("[YoloPPEService] Base sınıflar:", self.base_class_names)
 
-        # uploads klasörü yoksa oluştur
+    
         self.upload_dir = os.path.join(base_dir, "..", "uploads")
         os.makedirs(self.upload_dir, exist_ok=True)
 
