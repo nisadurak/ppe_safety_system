@@ -23,7 +23,7 @@ Sistem, hem klasik **form tabanlı yönetim** (şantiye, çalışan, denetim kay
 
 ## Video Örnek
 
-![PPE Demo](images/demo.gif)
+![PPE Demo](images/demogif.gif)
 ---
 ## 1. Genel Bakış
 
